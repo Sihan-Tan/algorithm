@@ -1,0 +1,62 @@
+## 思路
+
+利用数组来实现
+
+## 代码
+
+```javascript
+/**
+ * @param {number} maxSize
+ */
+var CustomStack = function (maxSize) {
+  this.value = [];
+  this.maxSize = maxSize;
+};
+
+/**
+ * @param {number} x
+ * @return {void}
+ */
+CustomStack.prototype.push = function (x) {
+  if (this.value.length < this.maxSize) {
+    this.value.push(x);
+  }
+};
+
+/**
+ * @return {number}
+ */
+CustomStack.prototype.pop = function () {
+  if (this.value.length === 0) {
+    return -1;
+  }
+  const tmp = this.value[this.value.length - 1];
+  this.value.length -= 1;
+  return tmp;
+};
+
+/**
+ * @param {number} k
+ * @param {number} val
+ * @return {void}
+ */
+CustomStack.prototype.increment = function (k, val) {
+  const max = Math.min(k, this.value.length);
+  for (let i = 0; i < max; i++) {
+    this.value[i] += val;
+  }
+};
+
+/**
+ * Your CustomStack object will be instantiated and called as such:
+ * var obj = new CustomStack(maxSize)
+ * obj.push(x)
+ * var param_2 = obj.pop()
+ * obj.increment(k,val)
+ */
+```
+
+## 复杂度分析
+
+时间复杂度：push $O(1)$ pop $O(1)$ increment $O(n)$
+空间复杂度：push $O(1)$ pop $O(1)$ increment $O(n)$
